@@ -180,7 +180,6 @@ var _;
         }),
 
         // TODO:
-        // rangeStep
         // reverse
         // drop
         // dropWhile
@@ -211,11 +210,17 @@ var _;
         }),
 
         range: function* (from, to) {
-            while (from < to) {
-                yield from++;
+            if (from < to) {
+                yield* _.rangeStep(from, to, 1);
+            } else if (from > to) {
+                yield* _.rangeStep(from, to, -1);
             }
-            while (from > to) {
-                yield from--;
+        },
+
+        rangeStep: function* (from, to, step) {
+            while (from != to) {
+                yield from;
+                from += step;
             }
         },
 

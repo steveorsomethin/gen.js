@@ -58,6 +58,7 @@
                 tf.matchRanges(-1).should.equal('< 0');
                 tf.matchRanges(50).should.equal('0 <= x <= 100');
                 tf.matchRanges(NaN).should.equal('Outside a known range: NaN');
+                tf.matchRanges().should.equal('Outside a known range: undefined');
             });
 
             it('should match with complex left hand predicates', () => {
@@ -113,6 +114,30 @@
 
             it('should yield nothing when the range params are equal', () => {
                 thread(range(1, 1), toArray).should.eql([]);
+            });
+        });
+
+        describe('rangeStep', () => {
+            var {rangeStep, toArray, thread, inf, ninf, take} = _;
+
+            it('should iterate ascending', () => {
+                thread(rangeStep(0, 25, 5), toArray).should.eql([0, 5, 10, 15, 20]);
+            });
+
+            it('should iterate descending', () => {
+                thread(rangeStep(0, -25, -5), toArray).should.eql([0, -5, -10, -15, -20]);
+            });
+
+            it('should support infinite ascension', () => {
+                thread(rangeStep(0, inf, 10), take(5), toArray).should.eql([0, 10, 20, 30, 40]);
+            });
+
+            it('should support infinite descension', () => {
+                thread(rangeStep(0, ninf, -10), take(5), toArray).should.eql([0, -10, -20, -30, -40]);
+            });
+
+            it('should yield an infinite unchanging sequence when the step is 0', () => {
+                thread(rangeStep(1, inf, 0), take(5), toArray).should.eql([1, 1, 1, 1, 1]);
             });
         });
 
