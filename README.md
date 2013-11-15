@@ -11,7 +11,7 @@ I've been getting on with haskell and clojure recently. Thus, everything looks l
 
 ### What can it do? ###
 
-Currently it supports fairly nifty pattern matching, function composition, discriminated unions, lazily mapping/folding/etc over sequences, ranges and more. See test/testfuncs and test/tests.fjs.js for applied samples.
+Currently it supports fairly nifty pattern matching, function composition, discriminated unions, lazily mapping/folding/etc over sequences, ranges, automatic partial application and more. See test/testfuncs and test/tests.fjs.js for applied samples.
 
 ### This upsets me ###
 
