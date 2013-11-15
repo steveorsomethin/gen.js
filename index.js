@@ -105,7 +105,9 @@ var _;
         autoPartial: autoPartial,
 
         ret: (val) => () => val,
+
         compose: (...args) => (a) => args.reduce((acc, curr) => curr(acc), a),
+
         thread: (a, ...args) => args.reduce((acc, curr) => curr(acc), a),
 
         toArray: (seq) => {
