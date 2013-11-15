@@ -93,6 +93,17 @@
             });
         });
 
+        describe('flip', () => {
+            it('should apply arguments in reversed order', () => {
+                var {flip, sub, div} = _,
+                    subf = flip(sub),
+                    divf = flip(div);
+                
+                subf(1, 5).should.equal(4);
+                divf(2, 10).should.equal(5);
+            });
+        });
+
         describe('range', () => {
             var {range, toArray, thread, inf, ninf, take} = _;
 

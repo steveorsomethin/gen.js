@@ -106,6 +106,8 @@ var _;
 
         ret: (val) => () => val,
 
+        flip: autoPartial((f, a, b) => f(b, a)),
+
         compose: (...args) => (a) => args.reduce((acc, curr) => curr(acc), a),
 
         thread: (a, ...args) => args.reduce((acc, curr) => curr(acc), a),
