@@ -6,8 +6,7 @@
 </head>
 <body>
     <div id="mocha"></div>
-    <script src="expect.js"></script>
-    <script src="should.js"></script>
+    <script src="chai.js"></script>
     <script src="mocha.js"></script>
     <script>mocha.setup('bdd')</script>
     <!--script src="test.array.js"></script-->
@@ -16,7 +15,7 @@
     <script src="tests.fjs.js"></script>
     <script>
         mocha.checkLeaks();
-        mocha.globals(['_', 'tf']);
+        mocha.globals(['_', 'tf', 'chai']);
         mocha.run();
     </script>
 </body>

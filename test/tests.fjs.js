@@ -1,4 +1,7 @@
 ((_, tf) => {
+    var should = chai.should(),
+        assert = chai.assert;
+
     describe('fjs', () => {
         describe('match', () => {
             it('should match tuples of bools', () => {
