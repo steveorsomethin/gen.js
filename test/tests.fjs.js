@@ -246,5 +246,13 @@
                 toArray(zip([], [])).should.eql([]);
             });
         });
+
+        describe('repeat', () => {
+            var {thread, take, repeat, toArray} = _;
+
+            it('should yield value infinitely', () => {
+                thread(repeat('x'), take(5), toArray).should.eql(['x', 'x', 'x', 'x', 'x']);
+            });
+        });
     });
 })(_, tf);

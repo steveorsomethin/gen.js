@@ -186,6 +186,8 @@ var _;
             }
         }),
 
+        repeat: function* (a) {while (true) yield a},
+
         // TODO:
         // reverse
         // drop
