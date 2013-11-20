@@ -278,5 +278,25 @@
                 thread(cons(0, range(1, 5)), toArray).should.eql([0, 1, 2, 3, 4, 5]);
             });
         });
+
+        describe('conj', () => {
+            var {thread, range, conj, toArray} = _;
+
+            it('should yield values merged together', () => {
+                thread(conj(range(1, 5), 6), toArray).should.eql([1, 2, 3, 4, 5, 6]);
+            });
+        });
+
+        describe('reverse', () => {
+            var {thread, range, reverse, toArray} = _;
+
+            it('should yield values in reverse', () => {
+                thread(range(1, 5), reverse, toArray).should.eql([5, 4, 3, 2, 1]);
+            });
+
+            it('should handle empty sequences', () => {
+                thread([], reverse, toArray).should.eql([]);
+            });
+        });
     });
 })(_, tf);

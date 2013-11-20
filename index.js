@@ -226,6 +226,19 @@ var _;
             yield* [el];
             yield* seq;
         },
+
+        conj: function* (seq, el) {
+            yield* seq;
+            yield* [el];
+        },
+        reverse: function* (seq) {
+            var [head, tail] = _.split(_.seq(seq));
+
+            if (!head.done) {
+                yield* _.conj(_.reverse(tail), head.value);
+            }
+        },
+
         zip: function* (a, b) {
             var nextA,
                 nextB;
