@@ -199,5 +199,34 @@
                 assert.deepEqual(toArray(tail([])), []);
             });
         });
+
+        describe('last', () => {
+            var {last} = _;
+
+            it('should return the last element of a sequence', () => {
+                last([1, 2, 3]).should.eql(3);
+            });
+
+            it('should return the last element of a single element sequence', () => {
+                last([1]).should.eql(1);
+            });
+
+            it('should return undefined on empty input', () => {
+                assert.equal(last([]), undefined);
+            });
+        });
+
+        describe('init', () => {
+            var {thread, range, init, toArray} = _;
+
+            it('should return everything except the last element of a sequence', () => {
+                thread(range(1, 3), init, toArray).should.eql([1, 2]);
+            });
+
+            it('should return empty on sequences of length 0 or 1', () => {
+                assert.deepEqual(toArray(init([1])), []);
+                assert.deepEqual(toArray(init([])), []);
+            });
+        });
     });
 })(_, tf);
