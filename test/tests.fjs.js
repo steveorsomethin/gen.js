@@ -287,6 +287,14 @@
             });
         });
 
+        describe('concat', () => {
+            var {thread, range, concat, toArray} = _;
+
+            it('should yield values merged together', () => {
+                thread(concat(range(1, 3), range(4, 6)), toArray).should.eql([1, 2, 3, 4, 5, 6]);
+            });
+        });
+
         describe('reverse', () => {
             var {thread, range, reverse, toArray} = _;
 

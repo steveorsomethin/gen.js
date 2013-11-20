@@ -231,6 +231,12 @@ var _;
             yield* seq;
             yield* [el];
         },
+
+        concat: function* (seqA, seqB) {
+            yield* seqA;
+            yield* seqB;
+        },
+
         reverse: function* (seq) {
             var [head, tail] = _.split(_.seq(seq));
 
