@@ -157,11 +157,16 @@ var _;
 
             seq = _.seq(seq);
 
-            prev = seq.next().value;
+            next = seq.next();
+            prev = next.value;
 
-            while(next = seq.next(), !next.done) {
-                yield prev;
-                prev = next.value;
+            if (next.done) {
+                yield* [];
+            } else {
+                while(next = seq.next(), !next.done) {
+                    yield prev;
+                    prev = next.value;
+                }
             }
         },
 
