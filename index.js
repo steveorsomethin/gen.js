@@ -190,6 +190,8 @@ var _;
 
         replicate: (n, a) => _.take(n, _.repeat(a)),
 
+        repeatedly: function* (f) {while (true) yield f()},
+
         // TODO:
         // reverse
         // drop

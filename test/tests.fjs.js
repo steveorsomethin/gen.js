@@ -262,5 +262,13 @@
                 toArray(replicate(5, 'x')).should.eql(['x', 'x', 'x', 'x', 'x']);
             });
         });
+
+        describe('repeatedly', () => {
+            var {ret, thread, take, repeatedly, toArray} = _;
+
+            it('should yield function result infinitely', () => {
+                thread(repeatedly(ret('x')), take(5), toArray).should.eql(['x', 'x', 'x', 'x', 'x']);
+            });
+        });
     });
 })(_, tf);
