@@ -178,6 +178,10 @@
                 head([1, 2, 3]).should.eql(1);
             });
 
+            it('should return the first element of a single element sequence', () => {
+                head([1]).should.eql(1);
+            });
+
             it('should return undefined on empty input', () => {
                 assert.equal(head([]), undefined);
             });
