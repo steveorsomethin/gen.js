@@ -254,5 +254,13 @@
                 thread(repeat('x'), take(5), toArray).should.eql(['x', 'x', 'x', 'x', 'x']);
             });
         });
+
+        describe('replicate', () => {
+            var {replicate, toArray} = _;
+
+            it('should yield value up to specified count', () => {
+                toArray(replicate(5, 'x')).should.eql(['x', 'x', 'x', 'x', 'x']);
+            });
+        });
     });
 })(_, tf);
