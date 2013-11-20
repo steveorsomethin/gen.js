@@ -188,7 +188,7 @@ var _;
 
         repeat: function* (a) {while (true) yield a},
 
-        replicate: (n, a) => _.take(n, _.repeat(a)),
+        replicate: autoPartial((n, a) => _.take(n, _.repeat(a))),
 
         repeatedly: function* (f) {while (true) yield f()},
 
