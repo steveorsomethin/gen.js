@@ -232,9 +232,9 @@ var _;
             yield* [el];
         }),
 
-        concat: autoPartial(function* (seqA, seqB) {
-            yield* seqA;
-            yield* seqB;
+        concat: autoPartial(function* (a, b) {
+            yield* a;
+            yield* b;
         }),
 
         reverse: function* (seq) {
