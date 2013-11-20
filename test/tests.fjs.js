@@ -170,5 +170,30 @@
                 thread(range(0, 5), foldl(add, 0), head).should.eql(15);
             });
         });
+
+        describe('head', () => {
+            var {head} = _;
+
+            it('should return the first element of a sequence', () => {
+                head([1, 2, 3]).should.eql(1);
+            });
+
+            it('should return undefined on empty input', () => {
+                assert.equal(head([]), undefined);
+            });
+        });
+
+        describe('tail', () => {
+            var {thread, range, tail, toArray} = _;
+
+            it('should return everything except the first element of a sequence', () => {
+                thread(range(1, 3), tail, toArray).should.eql([2, 3]);
+            });
+
+            it('should return empty on sequences of length 0 or 1', () => {
+                assert.deepEqual(toArray(tail([1])), []);
+                assert.deepEqual(toArray(tail([])), []);
+            });
+        });
     });
 })(_, tf);
