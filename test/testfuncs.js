@@ -1,5 +1,5 @@
 var tf = ((_) => {
-    var {match, gt, lt, eq, inRange, add, mul, sqr, ret, compose, thread} = _,
+    var {match, gt, lt, eq, inRange, add, mul, sqr, ret, compose, thread, instanceOf} = _,
         tf = {
             matchBools: (p) => match(p,
                                     [true, true], 'tt',
@@ -47,8 +47,8 @@ var tf = ((_) => {
                                 _, '_'),
 
             matchInstanceOf: (p) => (match(p,
-                                        _.instanceOf(Array), (arr) => arr.concat('Array'),
-                                        _.instanceOf(Object), (obj) => Object.keys(obj)).join(' ')),
+                                        instanceOf(Array), (arr) => arr.concat('Array'),
+                                        instanceOf(Object), (obj) => Object.keys(obj)).join(' ')),
 
             compose1: compose(add(2), mul(5), sqr),
             compose2: compose(ret(10), add(2), mul(5), sqr),
