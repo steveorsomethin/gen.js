@@ -212,15 +212,15 @@ var _;
         }),
 
         range: function* (from, to) {
-            if (from < to) {
+            if (from <= to) {
                 yield* _.rangeStep(from, to, 1);
-            } else if (from > to) {
+            } else if (from >= to) {
                 yield* _.rangeStep(from, to, -1);
             }
         },
 
         rangeStep: function* (from, to, step) {
-            while (from != to) {
+            while (from !== to + step) {
                 yield from;
                 from += step;
             }

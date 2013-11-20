@@ -111,11 +111,11 @@
             var {range, toArray, thread, inf, ninf, take} = _;
 
             it('should iterate ascending', () => {
-                thread(range(0, 5), toArray).should.eql([0, 1, 2, 3, 4]);
+                thread(range(0, 5), toArray).should.eql([0, 1, 2, 3, 4, 5]);
             });
 
             it('should iterate descending', () => {
-                thread(range(0, -5), toArray).should.eql([0, -1, -2, -3, -4]);
+                thread(range(0, -5), toArray).should.eql([0, -1, -2, -3, -4, -5]);
             });
 
             it('should support infinite ascension', () => {
@@ -126,8 +126,8 @@
                 thread(range(0, ninf), take(5), toArray).should.eql([0, -1, -2, -3, -4]);
             });
 
-            it('should yield nothing when the range params are equal', () => {
-                thread(range(1, 1), toArray).should.eql([]);
+            it('should yield a single element when the range params are equal', () => {
+                thread(range(1, 1), toArray).should.eql([1]);
             });
         });
 
@@ -135,11 +135,11 @@
             var {rangeStep, toArray, thread, inf, ninf, take} = _;
 
             it('should iterate ascending', () => {
-                thread(rangeStep(0, 25, 5), toArray).should.eql([0, 5, 10, 15, 20]);
+                thread(rangeStep(0, 25, 5), toArray).should.eql([0, 5, 10, 15, 20, 25]);
             });
 
             it('should iterate descending', () => {
-                thread(rangeStep(0, -25, -5), toArray).should.eql([0, -5, -10, -15, -20]);
+                thread(rangeStep(0, -25, -5), toArray).should.eql([0, -5, -10, -15, -20, -25]);
             });
 
             it('should support infinite ascension', () => {
@@ -159,7 +159,7 @@
             var {range, toArray, thread, map, sqr} = _;
 
             it('should lazily transform sequences', () => {
-                thread(range(0, 5), map(sqr), toArray).should.eql([0, 1, 4, 9, 16]);
+                thread(range(0, 5), map(sqr), toArray).should.eql([0, 1, 4, 9, 16, 25]);
             });
         });
 
@@ -167,7 +167,7 @@
             var {range, head, thread, foldl, add} = _;
 
             it('should lazily reduce sequences', () => {
-                thread(range(0, 5), foldl(add, 0), head).should.eql(10);
+                thread(range(0, 5), foldl(add, 0), head).should.eql(15);
             });
         });
     });
