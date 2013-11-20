@@ -241,7 +241,7 @@
                 thread(zip(range(1, 20), range(4, 6)), toArray).should.eql([[1, 4], [2, 5], [3,6]]);
             });
 
-            it('should return empty on sequences of length 0 or 1', () => {
+            it('should return empty on sequences of length 0', () => {
                 toArray(zip([1], [])).should.eql([]);
                 toArray(zip([], [])).should.eql([]);
             });
