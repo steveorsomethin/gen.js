@@ -222,20 +222,20 @@ var _;
             }
         }),
 
-        cons: function* (el, seq) {
+        cons: autoPartial(function* (el, seq) {
             yield* [el];
             yield* seq;
-        },
+        }),
 
-        conj: function* (seq, el) {
+        conj: autoPartial(function* (seq, el) {
             yield* seq;
             yield* [el];
-        },
+        }),
 
-        concat: function* (seqA, seqB) {
+        concat: autoPartial(function* (seqA, seqB) {
             yield* seqA;
             yield* seqB;
-        },
+        }),
 
         reverse: function* (seq) {
             var [head, tail] = _.split(_.seq(seq));
@@ -245,7 +245,7 @@ var _;
             }
         },
 
-        zip: function* (a, b) {
+        zip: autoPartial(function* (a, b) {
             var nextA,
                 nextB;
 
@@ -255,22 +255,22 @@ var _;
             while (nextA = a.next(), nextB = b.next(), !nextA.done && !nextB.done) {
                 yield [nextA.value, nextB.value];
             }
-        },
+        }),
 
-        range: function* (from, to) {
+        range: autoPartial(function* (from, to) {
             if (from <= to) {
                 yield* _.rangeStep(from, to, 1);
             } else if (from >= to) {
                 yield* _.rangeStep(from, to, -1);
             }
-        },
+        }),
 
-        rangeStep: function* (from, to, step) {
+        rangeStep: autoPartial(function* (from, to, step) {
             while (from !== to + step) {
                 yield from;
                 from += step;
             }
-        },
+        }),
 
         inf: Number.POSITIVE_INFINITY,
         ninf: Number.NEGATIVE_INFINITY,
