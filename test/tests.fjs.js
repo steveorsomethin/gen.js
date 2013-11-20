@@ -195,8 +195,8 @@
             });
 
             it('should return empty on sequences of length 0 or 1', () => {
-                assert.deepEqual(toArray(tail([1])), []);
-                assert.deepEqual(toArray(tail([])), []);
+                toArray(tail([1])).should.eql([]);
+                toArray(tail([])).should.eql([]);
             });
         });
 
@@ -224,8 +224,8 @@
             });
 
             it('should return empty on sequences of length 0 or 1', () => {
-                assert.deepEqual(toArray(init([1])), []);
-                assert.deepEqual(toArray(init([])), []);
+                toArray(init([1])).should.eql([]);
+                toArray(init([])).should.eql([]);
             });
         });
     });
