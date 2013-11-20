@@ -216,6 +216,18 @@ var _;
             }
         }),
 
+        zip: function* (a, b) {
+            var nextA,
+                nextB;
+
+            a = _.seq(a);
+            b = _.seq(b);
+
+            while (nextA = a.next(), nextB = b.next(), !nextA.done && !nextB.done) {
+                yield [nextA.value, nextB.value];
+            }
+        },
+
         range: function* (from, to) {
             if (from <= to) {
                 yield* _.rangeStep(from, to, 1);

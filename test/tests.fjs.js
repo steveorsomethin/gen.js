@@ -228,5 +228,23 @@
                 toArray(init([])).should.eql([]);
             });
         });
+
+        describe('zip', () => {
+            var {thread, range, zip, toArray} = _;
+
+            it('should yield tuples of values', () => {
+                thread(zip(range(1, 3), range(4, 6)), toArray).should.eql([[1, 4], [2, 5], [3,6]]);
+            });
+
+            it('should only yield up to the shortest sequences length', () => {
+                thread(zip(range(1, 3), range(4, 9)), toArray).should.eql([[1, 4], [2, 5], [3,6]]);
+                thread(zip(range(1, 20), range(4, 6)), toArray).should.eql([[1, 4], [2, 5], [3,6]]);
+            });
+
+            it('should return empty on sequences of length 0 or 1', () => {
+                toArray(zip([1], [])).should.eql([]);
+                toArray(zip([], [])).should.eql([]);
+            });
+        });
     });
 })(_, tf);
