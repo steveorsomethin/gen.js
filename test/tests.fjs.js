@@ -270,5 +270,13 @@
                 thread(repeatedly(ret('x')), take(5), toArray).should.eql(['x', 'x', 'x', 'x', 'x']);
             });
         });
+
+        describe('cons', () => {
+            var {thread, range, cons, toArray} = _;
+
+            it('should yield values merged together', () => {
+                thread(cons(0, range(1, 5)), toArray).should.eql([0, 1, 2, 3, 4, 5]);
+            });
+        });
     });
 })(_, tf);

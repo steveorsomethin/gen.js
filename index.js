@@ -222,6 +222,10 @@ var _;
             }
         }),
 
+        cons: function* (el, seq) {
+            yield* [el];
+            yield* seq;
+        },
         zip: function* (a, b) {
             var nextA,
                 nextB;
