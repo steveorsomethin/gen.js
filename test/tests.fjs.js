@@ -306,5 +306,37 @@
                 thread([], reverse, toArray).should.eql([]);
             });
         });
+
+        describe('take', () => {
+            var {thread, range, take, toArray} = _;
+
+            it('should yield the specified number of values', () => {
+                thread(range(1, 5), take(2), toArray).should.eql([1, 2]);
+            });
+
+            it('should terminate with the underlying sequence', () => {
+                thread(range(1, 5), take(20), toArray).should.eql([1, 2, 3, 4, 5]);
+            });
+
+            it('should yield empty when taking 0', () => {
+                thread(range(1, 5), take(0), toArray).should.eql([]);
+            });
+        });
+
+        describe('takeWhile', () => {
+            var {thread, range, takeWhile, lt, ret, toArray} = _;
+
+            it('should yield the specified number of values', () => {
+                thread(range(1, 5), takeWhile(lt(3)), toArray).should.eql([1, 2]);
+            });
+
+            it('should terminate with the underlying sequence', () => {
+                thread(range(1, 5), takeWhile(lt(20)), toArray).should.eql([1, 2, 3, 4, 5]);
+            });
+
+            it('should yield empty when no elements match predicate', () => {
+                thread(range(1, 5), takeWhile(ret(false)), toArray).should.eql([]);
+            });
+        });
     });
 })(_, tf);
