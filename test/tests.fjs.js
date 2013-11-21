@@ -326,7 +326,7 @@
         describe('takeWhile', () => {
             var {thread, range, takeWhile, lt, ret, toArray} = _;
 
-            it('should yield the specified number of values', () => {
+            it('should yield values while the predicate evaluates to true', () => {
                 thread(range(1, 5), takeWhile(lt(3)), toArray).should.eql([1, 2]);
             });
 
