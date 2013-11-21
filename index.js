@@ -185,6 +185,30 @@ var _;
             }
         }),
 
+        drop: autoPartial(function* (count, seq) {
+            var next,
+                dropped = 0;
+
+            while (next = seq.next(), !next.done) {
+                if (dropped++ >= count) {
+                    yield next.value;
+                }
+            }
+        }),
+
+        dropWhile: autoPartial(function* (fn, seq) {
+            var shouldDrop = true,
+                next;
+
+            while (next = seq.next(), !next.done) {
+                shouldDrop = shouldDrop && fn(next.value);
+
+                if (!shouldDrop) {
+                    yield next.value;
+                }
+            }
+        }),
+
         repeat: function* (a) {while (true) yield a},
 
         replicate: autoPartial((n, a) => _.take(n, _.repeat(a))),

@@ -338,5 +338,37 @@
                 thread(range(1, 5), takeWhile(ret(false)), toArray).should.eql([]);
             });
         });
+
+        describe('drop', () => {
+            var {thread, range, drop, toArray} = _;
+
+            it('should drop the specified number of values', () => {
+                thread(range(1, 5), drop(2), toArray).should.eql([3, 4, 5]);
+            });
+
+            it('should terminate with the underlying sequence', () => {
+                thread(range(1, 5), drop(0), toArray).should.eql([1, 2, 3, 4, 5]);
+            });
+
+            it('should yield empty when dropping all', () => {
+                thread(range(1, 5), drop(20), toArray).should.eql([]);
+            });
+        });
+
+        describe('dropWhile', () => {
+            var {thread, range, dropWhile, lt, ret, toArray} = _;
+
+            it('should drop values while the predicate evaluates to true', () => {
+                thread(range(1, 5), dropWhile(lt(3)), toArray).should.eql([3, 4, 5]);
+            });
+
+            it('should terminate with the underlying sequence', () => {
+                thread(range(1, 5), dropWhile(ret(false)), toArray).should.eql([1, 2, 3, 4, 5]);
+            });
+
+            it('should yield empty when dropping all', () => {
+                thread(range(1, 5), dropWhile(ret(true)), toArray).should.eql([]);
+            });
+        });
     });
 })(_, tf);
