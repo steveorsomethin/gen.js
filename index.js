@@ -191,11 +191,6 @@ var _;
 
         repeatedly: function* (f) {while (true) yield f()},
 
-        // TODO:
-        // reverse
-        // drop
-        // dropWhile
-
         map: autoPartial(function* (fn, seq) {yield* (fn(s) for (s of seq))}),
 
         foldl: autoPartial(function* (fn, init, seq) {
