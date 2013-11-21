@@ -96,6 +96,14 @@
             });
         });
 
+        describe('apply', () => {
+            it('should apply arrays of arguments to the supplied function', () => {
+                var {apply, add} = _;
+
+                apply(add, [1, 2]).should.equal(3);
+            });
+        });
+
         describe('flip', () => {
             it('should apply arguments in reversed order', () => {
                 var {flip, sub, div} = _,

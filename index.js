@@ -104,6 +104,8 @@ var _;
 
         autoPartial: autoPartial,
 
+        apply: autoPartial((f, args) => f.apply(undefined, args)),
+
         ret: (val) => () => val,
 
         flip: autoPartial((f, a, b) => f(b, a)),
