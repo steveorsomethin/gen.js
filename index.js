@@ -134,8 +134,7 @@ var _;
         head: (seq) => _.seq(seq).next().value,
 
         tail: function* (seq) {
-            var i = 0;
-            yield* (x for (x of seq) if (i++ > 0));
+            yield* _.drop(1, _.seq(seq));
         },
 
         last: (seq) => {
