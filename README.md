@@ -42,7 +42,7 @@ Lazy sequences:
     var firstFiveFromInfinite = thread(range(0, inf), take(5), toArray),
         sumZeroToFive = thread(range(0, 5), foldl(add, 0), head);
     
-    console.log(fiveFromInfinite); // [0, 1, 2, 3, 4]
+    console.log(firstFiveFromInfinite); // [0, 1, 2, 3, 4]
     console.log(sumZeroToFive); // 15
 ```
 
